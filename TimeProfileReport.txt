@@ -1,0 +1,47 @@
+qsub -I -l select=1:ncpus=12:mpiprocs=12 -q hpcopt
+
+
+module load openmpi/gcc/64/1.4.5
+// mpicc -fopenmp mpi_openmp_hybrid_test.c
+// export OMP_NUM_THREADS=4; mpirun -np 2 ./a.out
+*************************************
+Time evaluation of hybrid
+*************************************
+no of Iterations = 1000
+
+row and column of board = 240 X 240
+
+[dogra@node131 ~]$ mpicxx -fopenmp test3.cpp
+[dogra@node131 ~]$ export OMP_NUM_THREADS=1;time mpirun -np 12 ./a.out
+
+real	0m1.958s
+user	0m18.192s
+sys	0m0.722s
+[dogra@node131 ~]$ export OMP_NUM_THREADS=2;time mpirun -np 6 ./a.out
+
+real	0m2.177s
+user	0m11.117s
+sys	0m0.292s
+[dogra@node131 ~]$ export OMP_NUM_THREADS=4;time mpirun -np 3 ./a.out
+
+real	0m2.676s
+user	0m7.005s
+sys	0m0.207s
+[dogra@node131 ~]$ export OMP_NUM_THREADS=3;time mpirun -np 4 ./a.out
+
+real	0m2.320s
+user	0m7.979s
+sys	0m0.194s
+[dogra@node131 ~]$ export OMP_NUM_THREADS=6;time mpirun -np 2 ./a.out
+
+real	0m3.070s
+user	0m5.489s
+sys	0m0.148s
+[dogra@node131 ~]$ export OMP_NUM_THREADS=12;time mpirun -np 1 ./a.out
+
+real	0m4.511s
+user	0m4.150s
+sys	0m0.123s
+
+
+
