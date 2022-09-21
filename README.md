@@ -1,4 +1,4 @@
-# HYBRIDComputing: Game Of Life
+# HYBRID Computing: Game of Life
 HYBRID computing project, Game of Life (C++, MPI &amp; OPENMP)
 
 Problem Descreiption here:
